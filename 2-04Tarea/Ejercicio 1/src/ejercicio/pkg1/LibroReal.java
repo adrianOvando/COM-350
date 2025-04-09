@@ -23,12 +23,11 @@ public class LibroReal implements Libro{
 
     @Override
     public void leer() {
-        System.out.println("\n--- Contenido del Libro ---");
+        System.out.println("\n Contenido del Libro ");
         System.out.println("Titulo: " + titulo);
         System.out.println("Autor: " + autor);
         System.out.println("Anio: " + año);
         System.out.println("\nContenido:");
         System.out.println(contenido);
-        System.out.println("---------------------------\n");
     }
 }
