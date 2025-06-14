@@ -1,0 +1,14 @@
+2025-05-28T15:29:40.003Z - info: Express server for Items listening on port3002
+2025-05-28T15:31:18.766Z - info: GET: /api/v1/habitaciones
+2025-05-28T15:31:47.342Z - info: Express server for Items listening on port3002
+2025-05-28T15:31:57.645Z - info: Express server for Items listening on port3002
+2025-05-28T15:32:02.387Z - info: Express server for Items listening on port3002
+2025-05-28T15:32:07.682Z - info: Express server for Items listening on port3002
+2025-05-28T15:32:17.321Z - info: Express server for Items listening on port3002
+2025-05-28T15:32:19.882Z - info: Express server for Items listening on port3002
+2025-05-28T15:32:23.532Z - info: GET: /api/v1/habitaciones
+2025-05-28T15:34:20.506Z - info: GET: /api/v1/habitaciones
+2025-05-28T15:35:48.969Z - info: GET: /api/v1/habitaciones/:id
+2025-05-28T16:25:57.667Z - info: GET: /api/v1/habitaciones
+2025-05-28T16:26:02.866Z - info: GET: /api/v1/habitaciones/:id
+2025-05-28T16:46:56.519Z - info: GET: /api/v1/habitaciones

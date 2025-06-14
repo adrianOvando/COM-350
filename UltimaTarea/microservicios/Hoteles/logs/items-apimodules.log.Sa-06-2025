@@ -1,0 +1,3 @@
+2025-06-14T18:34:17.474Z - info: Express server for Items listening on port3002
+2025-06-14T19:20:18.799Z - info: GET: /api/v1/habitaciones
+2025-06-14T19:20:25.182Z - info: GET: /api/v1/habitaciones/:id

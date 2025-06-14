@@ -1,0 +1,120 @@
+version: '3.8'
+
+services:
+  # Microservicio de usuarios/login (usa MongoDB)
+  serviceUsers:
+    build:
+      context: ./serviceUsers
+      dockerfile: Dockerfile
+    image: service-users:01
+    container_name: serviceUsers
+    ports:
+      - "3000:3000"
+    networks:
+      - appnet
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JWT_SECRET=mi_secreto_jwt_2024
+      - MONGO_URI=mongodb://mongo:27017/bd_usuarios
+
+  # Microservicio de hoteles/habitaciones (usa MySQL)
+  hoteles:
+    build:
+      context: ./hoteles
+      dockerfile: Dockerfile
+    image: hoteles:01
+    container_name: hoteles
+    ports:
+      - "3002:3002"
+    networks:
+      - appnet
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - JWT_SECRET=mi_secreto_jwt_2024
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=hoteldb
+      - DB_USER=hotel_user
+      - DB_PASSWORD=hotel_pass
+
+  # Microservicio de reservas (usa MongoDB)
+  reserva:
+    build:
+      context: ./reservas
+      dockerfile: Dockerfile
+    image: reservas:01
+    container_name: reserva
+    ports:
+      - "3005:3005"
+    networks:
+      - appnet
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3005
+      - JWT_SECRET=mi_secreto_jwt_2024
+      - MONGO_URI=mongodb://mongo:27017/reservasdb
+
+  # Base de datos MySQL (para usuarios y hoteles)
+  mysql:
+    image: mysql:8.0
+    container_name: hotel_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: hoteldb
+      MYSQL_USER: hotel_user
+      MYSQL_PASSWORD: hotel_pass
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "3307:3306"
+    networks:
+      - appnet
+
+  # Base de datos MongoDB (para reservas)
+  mongo:
+    image: mongo:5.0
+    container_name: hotel_mongo
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - appnet
+
+  # Nginx como proxy inverso
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - serviceUsers
+      - hoteles
+      - reserva
+    networks:
+      - appnet
+    restart: unless-stopped
+
+networks:
+  appnet:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  mongo-data:
