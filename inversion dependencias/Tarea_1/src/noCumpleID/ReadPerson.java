@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author jharif
+ * @author Adrian
  */
 public class ReadPerson {
     public void ReadPerson(Connection connection){

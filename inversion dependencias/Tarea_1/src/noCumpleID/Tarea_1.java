@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author jharif
+ * @author Adrian
  */
 public class Tarea_1 {
 

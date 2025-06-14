@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 
 /**
  *
- * @author jharif
+ * @author Adrian
  */
 public class CreatePerson {
 

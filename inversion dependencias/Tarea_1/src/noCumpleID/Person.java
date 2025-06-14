@@ -6,7 +6,7 @@ package noCumpleID;
 
 /**
  *
- * @author jharif
+ * @author Adrian
  */
 public class Person {
     private int Id;

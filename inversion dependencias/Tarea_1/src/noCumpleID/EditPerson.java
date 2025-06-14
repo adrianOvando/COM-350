@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author jharif
+ * @author Adrian
  */
 public class EditPerson {
     public void UpdatePerson(Connection connection, Person person) {

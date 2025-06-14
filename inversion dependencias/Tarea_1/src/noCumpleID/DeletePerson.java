@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author jharif
+ * @author Adrian
  */
 public class DeletePerson {
     public void DeletePerson(Connection connection, int id) {

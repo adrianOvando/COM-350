@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author jharif
+ * @author Adrian
  */
 public class DBConnection {
     private static final String URL = "jdbc:mysql://localhost:3307/db_persona?useSSL=false&serverTimezone=UTC";
